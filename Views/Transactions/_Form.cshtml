@@ -1,0 +1,11 @@
+@model FinanceTransaction
+<div asp-validation-summary="ModelOnly" class="validation"></div>
+<label asp-for="Date">Дата</label><input asp-for="Date" />
+<label asp-for="Type">Тип</label><select asp-for="Type"><option value="1">Доход</option><option value="2">Расход</option></select>
+<label asp-for="Category">Категория</label><input asp-for="Category" placeholder="Например, Транспорт" />
+<label asp-for="Description">Описание</label><input asp-for="Description" placeholder="Краткое описание" />
+<label asp-for="Amount">Сумма</label><input asp-for="Amount" step="0.01" />
+<div class="form-actions">
+    <button class="button" type="submit">Сохранить</button>
+    <a class="button secondary" asp-action="Index">Отмена</a>
+</div>

@@ -1,0 +1,43 @@
+@page
+@model Byudzhetogramma.Areas.Identity.Pages.Account.LoginModel
+@{
+    ViewData["Title"] = "Вход";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<section class="auth-page">
+    <div class="auth-card">
+        <div class="auth-form-side">
+            <div class="auth-eyebrow">Личный кабинет</div>
+            <h1>Вход в Бюджетограмму</h1>
+            <p class="auth-lead">Продолжите вести доходы, расходы и лимиты в одном месте.</p>
+
+            <form method="post" class="auth-form">
+                <div asp-validation-summary="ModelOnly" class="validation"></div>
+
+                <label asp-for="Input.Email">Электронная почта</label>
+                <input asp-for="Input.Email" autocomplete="username" placeholder="name@example.com" />
+                <span asp-validation-for="Input.Email" class="validation"></span>
+
+                <label asp-for="Input.Password">Пароль</label>
+                <input asp-for="Input.Password" autocomplete="current-password" placeholder="Введите пароль" />
+                <span asp-validation-for="Input.Password" class="validation"></span>
+
+                <label class="checkbox-row">
+                    <input asp-for="Input.RememberMe" />
+                    <span>Запомнить меня</span>
+                </label>
+
+                <button class="button auth-submit" type="submit">Войти</button>
+            </form>
+
+            <p class="auth-switch">Нет учетной записи? <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Зарегистрироваться</a></p>
+        </div>
+
+        <aside class="auth-brand-side" aria-label="Бюджетограмма">
+            <div class="auth-brand-mark">⌁</div>
+            <div class="auth-brand-name">Бюджетограмма</div>
+            <p>Финансовый ритм под контролем</p>
+        </aside>
+    </div>
+</section>

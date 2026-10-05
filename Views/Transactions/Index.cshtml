@@ -1,0 +1,17 @@
+@model IEnumerable<FinanceTransaction>
+@{ ViewData["Title"] = "Операции"; }
+<div class="title-row"><div><div class="page-kicker">История</div><h1>Операции</h1></div><a class="button" asp-action="Create">＋ Добавить</a></div>
+<div class="table-shell">
+<table>
+<thead><tr><th>Дата</th><th>Тип</th><th>Категория</th><th>Описание</th><th>Сумма</th><th></th></tr></thead>
+<tbody>
+@foreach (var x in Model)
+{
+    <tr>
+        <td>@x.Date.ToString("dd.MM.yyyy")</td><td><span class="badge @(x.Type == TransactionType.Income ? "income" : "expense")">@(x.Type == TransactionType.Income ? "Доход" : "Расход")</span></td><td>@x.Category</td><td>@x.Description</td><td>@x.Amount.ToString("N2") ₽</td>
+        <td class="nowrap"><a class="table-link" asp-action="Edit" asp-route-id="@x.Id">Изменить</a> <form asp-action="Delete" asp-route-id="@x.Id" method="post" class="inline" onsubmit="return confirm('Удалить запись?');"><button class="link-button danger">Удалить</button></form></td>
+    </tr>
+}
+</tbody>
+</table>
+</div>

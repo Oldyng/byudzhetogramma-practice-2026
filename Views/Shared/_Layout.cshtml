@@ -1,0 +1,40 @@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - Бюджетограмма</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+<header>
+    <nav class="nav">
+        <a class="brand" asp-controller="Home" asp-action="Index"><span class="brand-mark">⌁</span><span>Бюджетограмма</span></a>
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <a asp-controller="Home" asp-action="Index">Сводка</a>
+            <a asp-controller="Transactions" asp-action="Index">Операции</a>
+            <a asp-controller="Budgets" asp-action="Index">Лимиты</a>
+            <a asp-controller="Transactions" asp-action="ExportCsv">CSV</a>
+            <span class="spacer"></span>
+            <form method="post" asp-area="Identity" asp-page="/Account/Logout"
+                  asp-route-returnUrl="/" class="inline">
+                <button type="submit" class="link-button">Выйти</button>
+            </form>
+        }
+        else
+        {
+            <span class="spacer"></span>
+            <a asp-area="Identity" asp-page="/Account/Login">Войти</a>
+            <a asp-area="Identity" asp-page="/Account/Register">Регистрация</a>
+        }
+    </nav>
+</header>
+<main class="container">
+    @RenderBody()
+</main>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

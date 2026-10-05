@@ -1,0 +1,9 @@
+@model FinanceTransaction
+@{ ViewData["Title"] = "Изменение операции"; }
+<section class="centered-page">
+    <div class="form-wrap">
+        <div class="page-kicker">Операции</div>
+        <h1>Изменение операции</h1>
+        <form method="post" class="form-card"><input type="hidden" asp-for="Id" /><partial name="_Form" model="Model" /></form>
+    </div>
+</section>

@@ -1,0 +1,42 @@
+@page
+@model Byudzhetogramma.Areas.Identity.Pages.Account.RegisterModel
+@{
+    ViewData["Title"] = "Регистрация";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<section class="auth-page">
+    <div class="auth-card">
+        <div class="auth-form-side">
+            <div class="auth-eyebrow">Новая учетная запись</div>
+            <h1>Регистрация</h1>
+            <p class="auth-lead">Создайте профиль и ведите бюджет отдельно от других пользователей.</p>
+
+            <form method="post" class="auth-form">
+                <div asp-validation-summary="ModelOnly" class="validation"></div>
+
+                <label asp-for="Input.Email">Электронная почта</label>
+                <input asp-for="Input.Email" autocomplete="username" placeholder="name@example.com" />
+                <span asp-validation-for="Input.Email" class="validation"></span>
+
+                <label asp-for="Input.Password">Пароль</label>
+                <input asp-for="Input.Password" autocomplete="new-password" placeholder="Минимум 6 символов" />
+                <span asp-validation-for="Input.Password" class="validation"></span>
+
+                <label asp-for="Input.ConfirmPassword">Повторите пароль</label>
+                <input asp-for="Input.ConfirmPassword" autocomplete="new-password" placeholder="Повторите пароль" />
+                <span asp-validation-for="Input.ConfirmPassword" class="validation"></span>
+
+                <button class="button auth-submit" type="submit">Создать учетную запись</button>
+            </form>
+
+            <p class="auth-switch">Уже зарегистрированы? <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">Войти</a></p>
+        </div>
+
+        <aside class="auth-brand-side" aria-label="Бюджетограмма">
+            <div class="auth-brand-mark">⌁</div>
+            <div class="auth-brand-name">Бюджетограмма</div>
+            <p>Доходы, расходы и лимиты — в одном ритме.</p>
+        </aside>
+    </div>
+</section>

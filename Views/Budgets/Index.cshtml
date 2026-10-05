@@ -1,0 +1,11 @@
+@model IEnumerable<BudgetLimit>
+@{ ViewData["Title"] = "Лимиты"; }
+<div class="title-row"><div><div class="page-kicker">Планирование</div><h1>Лимиты текущего месяца</h1></div><a class="button" asp-action="Create">＋ Добавить / Изменить</a></div>
+<div class="table-shell">
+<table><thead><tr><th>Категория</th><th>Лимит</th><th>Месяц</th><th></th></tr></thead><tbody>
+@foreach (var x in Model)
+{
+<tr><td>@x.Category</td><td>@x.LimitAmount.ToString("N2") ₽</td><td>@x.Month.ToString("MM.yyyy")</td><td><form asp-action="Delete" asp-route-id="@x.Id" method="post" onsubmit="return confirm('Удалить лимит?');"><button class="link-button danger">Удалить</button></form></td></tr>
+}
+</tbody></table>
+</div>

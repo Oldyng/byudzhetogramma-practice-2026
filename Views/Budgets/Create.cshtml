@@ -1,0 +1,18 @@
+@model BudgetLimit
+@{ ViewData["Title"] = "Лимит"; }
+<section class="centered-page">
+    <div class="form-wrap">
+        <div class="page-kicker">Контроль бюджета</div>
+        <h1>Добавить или изменить лимит</h1>
+        <form method="post" class="form-card">
+            <div asp-validation-summary="ModelOnly" class="validation"></div>
+            <label asp-for="Category">Категория</label><input asp-for="Category" placeholder="Например, Продукты" />
+            <label asp-for="LimitAmount">Лимит</label><input asp-for="LimitAmount" step="0.01" />
+            <label asp-for="Month">Месяц</label><input asp-for="Month" type="month" value="@Model.Month.ToString("yyyy-MM")" />
+            <div class="form-actions">
+                <button class="button" type="submit">Сохранить</button>
+                <a class="button secondary" asp-action="Index">Отмена</a>
+            </div>
+        </form>
+    </div>
+</section>
